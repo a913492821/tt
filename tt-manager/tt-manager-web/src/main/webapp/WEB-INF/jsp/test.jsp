@@ -3,9 +3,10 @@
 <head>
     <title>测试layui</title>
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/static/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/lib/layui/css/layui.css">
     <script type="text/javascript" src="${pageContext.request.contextPath}/lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/test.js" charset="utf-8"></script>
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
+    <%--<script type="text/javascript" src="${pageContext.request.contextPath}/static/js/test.js" charset="utf-8"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>--%>
 </head>
 <body>
     <h1>hello world</h1>
