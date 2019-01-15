@@ -28,27 +28,27 @@ layui.use(['admin', 'jquery', 'table'], function () {
             {field: 'catName', title: '分类名称'},
             {field: 'status', title: '商品状态', templet: '#myTpl'}
         ]]
-        // ,done:function(res,curr,count){
-        //     // var $statusCol = $("[data-field='status']");//商品状态这一列
-        //     // console.log($statusCol.children());
-        //     // console.log($("[data-field='status']").children());
-        //     $("[data-field='status']").children().each(function(){
-        //         // this 当前DOM对象
-        //         //$(this) 当前jQuery对象
-        //         // val() text() html() 三个函数都是既可以设值也可以取值
-        //         // val() 一般用于文本框 单选按钮 复选按钮这些的取值
-        //         // text() 一般是用于获取指定控件中的文本 <div><strong>hello</strong></div> text() ====> hello
-        //         // html() 一般是用于获取指定控件中的标签和文本 <div><strong>hello</strong></div> html() ====> <strong>hello</strong>
-        //         // console.log($(this).text());
-        //         if($(this).text() == '1'){
-        //             //正常
-        //             $(this).text('正常');
-        //         }else if($(this).text() == '2'){
-        //             //下架
-        //             $(this).text('下架');
-        //         }
-        //     });
-        // }
+        ,done:function(res,curr,count){
+            // var $statusCol = $("[data-field='status']");//商品状态这一列
+            // console.log($statusCol.children());
+            // console.log($("[data-field='status']").children());
+            $("[data-field='status']").children().each(function(){
+                // this 当前DOM对象
+                //$(this) 当前jQuery对象
+                // val() text() html() 三个函数都是既可以设值也可以取值
+                // val() 一般用于文本框 单选按钮 复选按钮这些的取值
+                // text() 一般是用于获取指定控件中的文本 <div><strong>hello</strong></div> text() ====> hello
+                // html() 一般是用于获取指定控件中的标签和文本 <div><strong>hello</strong></div> html() ====> <strong>hello</strong>
+                // console.log($(this).text());
+                if($(this).text() == '1'){
+                    //正常
+                    $(this).text('正常');
+                }else if($(this).text() == '2'){
+                    //下架
+                    $(this).text('下架');
+                }
+            });
+        }
     });
 
     //

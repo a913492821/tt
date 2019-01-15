@@ -2,7 +2,7 @@ package com.hang.manager.web;
 
 import com.hang.manager.pojo.dto.ItemsList;
 import com.hang.manager.pojo.dto.PageBean;
-import com.hang.manager.pojo.po.TbItem;
+import com.hang.manager.pojo.vo.TbItemCustom;
 import com.hang.manager.service.ItemsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +17,7 @@ public class ItemsController {
 
     @RequestMapping(value = "/items",method = RequestMethod.GET)
     @ResponseBody
-    public ItemsList<TbItem> findItems(PageBean pageBean){
+    public ItemsList<TbItemCustom> findItems(PageBean pageBean){
 
         return itemsService.findItems(pageBean);
     }
