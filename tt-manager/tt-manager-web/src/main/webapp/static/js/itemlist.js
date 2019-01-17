@@ -90,7 +90,7 @@ layui.use(['admin', 'jquery', 'table'], function () {
             //text()  html()
             var title = $("#title").val();
             //不为空
-            if($.trim(title).length > 0 ){
+            if($.trim(title).length >= 0 ){
                 //文本框中有内容，表格重载
                 table.reload("articleList",{
                     page:{curr:1},

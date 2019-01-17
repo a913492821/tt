@@ -1,6 +1,7 @@
 package com.hang.manager.web;
 
 import com.hang.manager.pojo.dto.ItemsList;
+import com.hang.manager.pojo.dto.ItemsQuery;
 import com.hang.manager.pojo.dto.PageBean;
 import com.hang.manager.pojo.vo.TbItemCustom;
 import com.hang.manager.service.ItemsService;
@@ -18,15 +19,16 @@ public class ItemsController {
     @Autowired
     private ItemsService itemsService;
 
-    @RequestMapping(value = "/items",method = RequestMethod.GET)
+    @RequestMapping(value = "/items", method = RequestMethod.GET)
     @ResponseBody
-    public ItemsList<TbItemCustom> findItems(PageBean pageBean){
+    public ItemsList<TbItemCustom> findItems(PageBean pageBean, ItemsQuery itemsQuery) {
 
-        return itemsService.findItems(pageBean);
+        return itemsService.findItems(pageBean, itemsQuery);
     }
-    @RequestMapping(value = "/items/batch",method = RequestMethod.POST)
+
+    @RequestMapping(value = "/items/batch", method = RequestMethod.POST)
     @ResponseBody
-    public Integer deleteItems(@RequestParam("ids[]") List<Long> ids){
+    public Integer deleteItems(@RequestParam("ids[]") List<Long> ids) {
 
         return itemsService.deleteItems(ids);
     }

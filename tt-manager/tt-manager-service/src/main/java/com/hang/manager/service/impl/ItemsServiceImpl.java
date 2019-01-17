@@ -3,6 +3,7 @@ package com.hang.manager.service.impl;
 import com.hang.manager.dao.TbItemCustomMapper;
 import com.hang.manager.dao.TbItemMapper;
 import com.hang.manager.pojo.dto.ItemsList;
+import com.hang.manager.pojo.dto.ItemsQuery;
 import com.hang.manager.pojo.dto.PageBean;
 import com.hang.manager.pojo.po.TbItem;
 import com.hang.manager.pojo.po.TbItemExample;
@@ -23,15 +24,15 @@ public class ItemsServiceImpl implements ItemsService {
     private TbItemMapper tbItemMapper;
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public ItemsList<TbItemCustom> findItems(PageBean pageBean) {
+    public ItemsList<TbItemCustom> findItems(PageBean pageBean, ItemsQuery itemsQuery) {
 
         ItemsList<TbItemCustom> list = new ItemsList<>();
         list.setCode(0);
         list.setMsg("success");
         try {
-            Long count = tbItemCustomMapper.countItems();
+            Long count = tbItemCustomMapper.countItems(itemsQuery);
             list.setCount(count);
-            List<TbItemCustom> items = tbItemCustomMapper.findItems(pageBean);
+            List<TbItemCustom> items = tbItemCustomMapper.findItems(pageBean,itemsQuery);
             list.setData(items);
 
         }catch (Exception e){

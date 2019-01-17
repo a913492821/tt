@@ -1,19 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hang.manager.dao.TbItemCustomMapper" >
+
   <sql id="Base_Column_List" >
     ti.id, ti.title, ti.sell_point as sellPoint, ti.price, ti.num, ti.barcode, ti.image, ti.cid, ic.name as catName, ti.status, ti.created, ti.updated
   </sql>
+  <sql id="Query_By_Title">
+    <where>
+      ti.status != 3
+      <if test="itemsQuery !=null and itemsQuery.title !=null and itemsQuery.title !=''">
+        and ti.title like '%${itemsQuery.title}%'
+      </if>
+    </where>
+  </sql>
+
+
   <select id="countItems" resultType="Long">
     select count(1)
     from tb_item ti
-    where ti.status != 3
+    <include refid="Query_By_Title"/>
   </select>
   <select id="findItems" resultType="com.hang.manager.pojo.vo.TbItemCustom">
     select <include refid="Base_Column_List"/>
     from tb_item ti left join tb_item_cat ic on ti.cid = ic.id
-    where ti.status != 3
+    <include refid="Query_By_Title"/>
     order by ti.id
-    limit #{offset},#{limit}
+    limit #{pageBean.offset},#{pageBean.limit}
   </select>
+
 </mapper>
