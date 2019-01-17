@@ -7,10 +7,13 @@
   <select id="countItems" resultType="Long">
     select count(1)
     from tb_item ti
+    where ti.status != 3
   </select>
   <select id="findItems" resultType="com.hang.manager.pojo.vo.TbItemCustom">
     select <include refid="Base_Column_List"/>
     from tb_item ti left join tb_item_cat ic on ti.cid = ic.id
+    where ti.status != 3
+    order by ti.id
     limit #{offset},#{limit}
   </select>
 </mapper>

@@ -1,8 +1,11 @@
 package com.hang.manager.service.impl;
 
 import com.hang.manager.dao.TbItemCustomMapper;
+import com.hang.manager.dao.TbItemMapper;
 import com.hang.manager.pojo.dto.ItemsList;
 import com.hang.manager.pojo.dto.PageBean;
+import com.hang.manager.pojo.po.TbItem;
+import com.hang.manager.pojo.po.TbItemExample;
 import com.hang.manager.pojo.vo.TbItemCustom;
 import com.hang.manager.service.ItemsService;
 import org.slf4j.Logger;
@@ -16,6 +19,8 @@ public class ItemsServiceImpl implements ItemsService {
 
     @Autowired
     private TbItemCustomMapper tbItemCustomMapper;
+    @Autowired
+    private TbItemMapper tbItemMapper;
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public ItemsList<TbItemCustom> findItems(PageBean pageBean) {
@@ -36,5 +41,15 @@ public class ItemsServiceImpl implements ItemsService {
             e.printStackTrace();
         }
         return list;
+    }
+
+    @Override
+    public Integer deleteItems(List<Long> ids) {
+        TbItem tbItem = new TbItem();
+        tbItem.setStatus((byte) 3);
+        TbItemExample tbItemExample = new TbItemExample();
+        TbItemExample.Criteria criteria = tbItemExample.createCriteria();
+        criteria.andIdIn(ids);
+        return tbItemMapper.updateByExampleSelective(tbItem,tbItemExample);
     }
 }

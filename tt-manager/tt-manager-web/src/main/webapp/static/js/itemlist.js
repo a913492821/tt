@@ -67,7 +67,7 @@ layui.use(['admin', 'jquery', 'table'], function () {
                 }
                 //异步提交到后台 ids
                 $.post(
-                    '../../item/batch',
+                    '../../items/batch',
                     {'ids[]': ids},
                     function (data) {
                         //至少删除一条记录
